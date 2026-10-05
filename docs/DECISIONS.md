@@ -53,3 +53,19 @@ Spec di riferimento: [`superpowers/specs/2026-10-05-gestione-spese-design.md`](s
 ### D-010 · 2026-10-05 · Documentazione in un unico registro
 - **Decisione:** le decisioni stanno in questo file; spec, design system e prompt Stitch in `docs/`.
 - **Alternative scartate:** ADR numerati, un file per decisione (più struttura del necessario per un progetto piccolo).
+
+### D-011 · 2026-10-05 · Nome dell'app: "Diario spese"
+- **Decisione:** l'app si chiama **Diario spese**.
+- **Perché:** descrittivo e diretto, e richiama il mondo visivo scelto (D-012).
+- **Alternative scartate:** Spicci, Segno, Conti.
+
+### D-012 · 2026-10-05 · Mondo visivo "Diario scolastico"
+- **Decisione:** il mese si presenta come un diario scolastico: testata blu copertina (`#1F3DB0`), pagina bianca, una fascia per giorno con il numero grande, categorie segnate con colori evidenziatore piatti. Gesto distintivo: la "passata di evidenziatore" dietro alle etichette, alla barra del budget e alla spesa appena salvata. Tema chiaro, nessuna ombra né gradiente, cifre tabellari. Dettagli in `DESIGN.md` e nel contratto di direzione `.impeccable/surfaces/fe-src-app-tsx.md`.
+- **Perché:** proposto dal sorteggio di Impeccable e scelto dall'utente; è riconoscibile per chi è cresciuto con il diario e serve al compito: la struttura per giorni rispecchia l'elenco delle spese, gli evidenziatori codificano le categorie. Il tema chiaro garantisce la leggibilità in pieno giorno, alla cassa.
+- **Alternative scartate:** Linee della metro di Milano (metafora infografica molto vista, affollata con molte categorie); Tabellone Solari (fondo scuro poco leggibile all'aperto); lo standard della categoria (card bianche, ciambella, emoji: indistinguibile).
+- **Build path:** code-led. In questa sessione non è disponibile la generazione di immagini; le schermate di riferimento arriveranno da Stitch.
+
+### D-013 · 2026-10-05 · PRODUCT.md e DESIGN.md nella radice del progetto
+- **Decisione:** `PRODUCT.md` (fatti di prodotto) e `DESIGN.md` (design system) stanno nella radice, non in `docs/`. Il registro delle decisioni, la spec e il prompt di Stitch restano in `docs/`.
+- **Perché:** gli script di Impeccable li cercano solo nella radice; spostandoli, la revisione finale e la rigenerazione dei token non li troverebbero.
+- **Nota:** `DESIGN.md` è un *seed*, cioè la versione scritta prima del codice: dopo l'implementazione va rigenerato con `/impeccable document` a partire dai token reali.

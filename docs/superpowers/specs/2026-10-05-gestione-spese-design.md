@@ -46,7 +46,7 @@ Vite dev server (FE React, host: true) ──proxy /api──▶ Spring Boot :80
 | `name` | String | obbligatorio, unico (senza distinzione tra maiuscole e minuscole), 1–30 caratteri, spazi esterni rimossi |
 | `color` | String | obbligatorio, formato `#RRGGBB` |
 
-Al primo avvio, se la tabella è vuota, vengono create: Spesa, Casa, Trasporti, Ristoranti, Svago, Salute, Altro (i colori saranno quelli della palette di `DESIGN.md`).
+Al primo avvio, se la tabella è vuota, vengono create: Spesa, Casa, Trasporti, Ristoranti, Svago, Salute, Altro con i colori evidenziatore di `DESIGN.md` (Spesa `#7EE08A`, Casa `#6CCBFF`, Trasporti `#FFE45C`, Ristoranti `#FFB050`, Svago `#FF8AC2`, Salute `#5FE0D2`, Altro `#D4D8E0`).
 
 ### Expense
 
@@ -152,7 +152,7 @@ config/    CategorySeeder (CommandLineRunner)
 
 ## 7. Frontend (bozza funzionale, da allineare a Stitch)
 
-- React 19 + Vite 8 + TypeScript, `react-router`, CSS puro con le variabili (token) di `docs/design/DESIGN.md`.
+- React 19 + Vite 8 + TypeScript, `react-router`, CSS puro con le variabili (token) di `DESIGN.md` (radice del progetto).
 - Interfaccia in italiano; importi formattati con `Intl.NumberFormat('it-IT', {style: 'currency', currency: 'EUR'})`.
 - Mobile-first: riferimento 390px; aree toccabili ≥ 44px; azioni principali raggiungibili col pollice.
 - `vite.config.ts`: `server.host: true`, proxy `/api` → `http://localhost:8080`.
@@ -180,7 +180,7 @@ config/    CategorySeeder (CommandLineRunner)
 docs/
   DECISIONS.md                     registro unico delle decisioni
   superpowers/specs/…-design.md    questa spec
-  design/DESIGN.md                 direzione visiva e design system (Impeccable)
+  (radice) PRODUCT.md, DESIGN.md   fatti di prodotto e design system di Impeccable: stanno nella radice perché gli script di Impeccable li cercano lì
   design/stitch-prompt.md          prompt da incollare in Stitch, un blocco per schermata
   design/stitch/                   export delle schermate di Stitch (a cura dell'utente)
 ```
@@ -188,7 +188,7 @@ docs/
 ## Prossimi passi
 
 1. Revisione di questa spec da parte dell'utente.
-2. Impeccable → `docs/design/DESIGN.md`.
+2. Impeccable → `PRODUCT.md` e `DESIGN.md` (seed) nella radice; scelto il mondo visivo "Diario scolastico".
 3. Prompt per Stitch → `docs/design/stitch-prompt.md`; l'utente genera le schermate e le mette in `docs/design/stitch/`.
 4. Verifica dei paragrafi 4–5 sulle schermate (per esempio icona della categoria, dati extra nel riepilogo); la spec passa da "bozza" ad "approvata".
 5. Piano di implementazione (BE in TDD, poi FE).
