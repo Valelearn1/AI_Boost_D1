@@ -4,10 +4,12 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,7 +56,9 @@ class GlobalExceptionHandlerTest {
 
     @Test
     void missingParameterBecomes400() throws Exception {
-        mvc.perform(get("/test/month")).andExpect(status().isBadRequest());
+        mvc.perform(get("/test/month"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.detail").value("Parametro obbligatorio mancante: «month»."));
     }
 
     @Test
@@ -68,7 +72,25 @@ class GlobalExceptionHandlerTest {
     @Test
     void malformedJsonBecomes400() throws Exception {
         mvc.perform(post("/test/validate").contentType(MediaType.APPLICATION_JSON).content("{"))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.detail").value(
+                        "Richiesta non leggibile: controlla il formato dei dati (date AAAA-MM-GG, importi con il punto decimale)."));
+    }
+
+    @Test
+    void typeMismatchBecomes400InItalian() throws Exception {
+        mvc.perform(get("/test/id/abc"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.detail").value("Valore non valido per «id»: «abc»."));
+    }
+
+    @Test
+    void dataIntegrityViolationBecomes409ProblemDetail() throws Exception {
+        mvc.perform(get("/test/integrity"))
+                .andExpect(status().isConflict())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_PROBLEM_JSON))
+                .andExpect(jsonPath("$.detail").value(
+                        "I dati sono in conflitto con quelli già salvati (forse una richiesta doppia). Ricarica e riprova."));
     }
 
     /** Visibile anche agli altri test di contesto: espone solo rotte /test/*, innocue. */
@@ -88,6 +110,16 @@ class GlobalExceptionHandlerTest {
         @GetMapping("/test/month")
         String month(@RequestParam String month) {
             return Months.parse(month).toString();
+        }
+
+        @GetMapping("/test/id/{id}")
+        Long id(@PathVariable Long id) {
+            return id;
+        }
+
+        @GetMapping("/test/integrity")
+        void integrity() {
+            throw new DataIntegrityViolationException("Unique index or primary key violation");
         }
 
         @PostMapping("/test/validate")
