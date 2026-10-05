@@ -47,7 +47,7 @@ Strategia **Committed**: il blu copertina occupa tutta la testata (circa il 30% 
 | Lilla | `#C7A6FF` | disponibile |
 | Lime | `#C6E85A` | disponibile |
 
-Sulla testata blu, la barra del budget è una passata **gialla** (`#FFE45C`) su un binario bianco al 20%. Quando il budget è superato la barra resta piena, e il testo "Superato di …" va in bianco su una passata **corallo**.
+Sulla testata blu, la barra del budget è una passata **gialla** (`#FFE45C`) su un binario bianco al 20%. Quando il budget è superato la barra resta piena, e il testo "Superato di …" va in inchiostro su una passata **corallo** (`#FF8F7A`).
 
 ## Typography
 
@@ -85,7 +85,7 @@ Sulla testata blu, la barra del budget è una passata **gialla** (`#FFE45C`) su 
 
 **Da fare**
 - Usare la passata di evidenziatore come unico gesto distintivo, sempre con il colore della categoria.
-- Lasciare evidenziata la spesa appena salvata finché non scorre fuori dalla vista.
+- Lasciare evidenziata la spesa appena salvata (passata del colore della sua categoria dietro alla descrizione) finché non scorre fuori dalla vista.
 - Toccando una categoria nella ripartizione: attenuare le altre e filtrare l'elenco.
 - Scrivere testi asciutti: "Spesa salvata", "Budget superato di 42,30 €", "Nessuna spesa a ottobre".
 

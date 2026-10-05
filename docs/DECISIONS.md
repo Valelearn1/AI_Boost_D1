@@ -69,3 +69,13 @@ Spec di riferimento: [`superpowers/specs/2026-10-05-gestione-spese-design.md`](s
 - **Decisione:** `PRODUCT.md` (fatti di prodotto) e `DESIGN.md` (design system) stanno nella radice, non in `docs/`. Il registro delle decisioni, la spec e il prompt di Stitch restano in `docs/`.
 - **Perché:** gli script di Impeccable li cercano solo nella radice; spostandoli, la revisione finale e la rigenerazione dei token non li troverebbero.
 - **Nota:** `DESIGN.md` è un *seed*, cioè la versione scritta prima del codice: dopo l'implementazione va rigenerato con `/impeccable document` a partire dai token reali.
+
+### D-014 · 2026-10-05 · Schermate Stitch non bloccanti per backend e piano
+- **Decisione:** Stitch non risponde (timeout sia dall'interfaccia sia dal connettore). L'API viene verificata sui contenuti delle schermate definiti nei prompt, e si procede con piano e backend. Le immagini di Stitch vanno generate ed esportate prima di implementare il frontend.
+- **Perché:** il backend dipende dai dati mostrati, non dall'aspetto delle schermate; quei dati sono già fissati nei prompt.
+- **Stato su Stitch:** progetto "Diario spese" creato con il design system caricato da `DESIGN.md`; in `docs/design/stitch-prompt.md` ci sono i prompt brevi da usare lì.
+
+### D-015 · 2026-10-05 · Conteggio delle spese nella risposta delle categorie
+- **Decisione:** `GET/POST/PUT /categories` restituiscono anche `expenseCount` (spese totali della categoria, su tutti i mesi).
+- **Perché:** la schermata Categorie mostra "14 spese" e il conteggio permette di prevedere il blocco dell'eliminazione (D-006) senza tentare la `DELETE`.
+- **Alternative scartate:** un endpoint separato per i conteggi (una chiamata in più per una sola schermata); nessun conteggio (l'utente scoprirebbe il blocco solo dopo aver tentato di eliminare).

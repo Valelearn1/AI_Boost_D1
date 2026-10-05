@@ -1,7 +1,7 @@
 # Gestione spese personali — design
 
 - **Data:** 2026-10-05
-- **Stato:** bozza. Modello dati e API vanno confermati dopo le schermate di Stitch (vedi [Prossimi passi](#prossimi-passi)).
+- **Stato:** API verificata sui contenuti delle schermate (paragrafo 5bis), in attesa di approvazione. Le immagini di Stitch servono come riferimento visivo per il frontend.
 - **Decisioni:** il registro completo è in [`docs/DECISIONS.md`](../../DECISIONS.md).
 
 ## 1. Obiettivo
@@ -71,7 +71,7 @@ Al primo avvio, se la tabella è vuota, vengono create: Spesa, Casa, Trasporti, 
 2. altrimenti vale il budget del mese più recente **precedente** a M;
 3. altrimenti non c'è budget (`null`).
 
-## 5. API REST (bozza)
+## 5. API REST
 
 Base: `/api`. JSON, date in formato ISO (`2026-10-05`), mesi `YYYY-MM`, importi come numeri decimali.
 
@@ -82,7 +82,9 @@ Base: `/api`. JSON, date in formato ISO (`2026-10-05`), mesi `YYYY-MM`, importi 
 | GET | `/categories` | ordinate per nome |
 | POST | `/categories` | `{name, color}` → `201` |
 | PUT | `/categories/{id}` | `{name, color}` |
-| DELETE | `/categories/{id}` | `204`; `409` se esistono spese con questa categoria |
+| DELETE | `/categories/{id}` | `204`; `409` se esistono spese con questa categoria (il `detail` indica quante, es. "La categoria «Casa» ha 14 spese") |
+
+Risposta di una categoria (GET, POST, PUT): `{id, name, color, expenseCount}`. `expenseCount` è il numero totale di spese della categoria, su tutti i mesi: serve alla schermata Categorie ("14 spese") e a capire in anticipo se l'eliminazione è possibile.
 
 ### Spese
 
@@ -111,12 +113,13 @@ Risposta di una spesa: `{id, amount, date, description, category: {id, name, col
 ```json
 {
   "month": "2026-10",
-  "total": 842.50,
+  "total": 952.40,
   "budget": 1200.00,
   "budgetSourceMonth": "2026-09",
-  "remaining": 357.50,
+  "remaining": 247.60,
   "byCategory": [
-    { "categoryId": 1, "name": "Spesa", "color": "#4F7A5A", "total": 310.20 }
+    { "categoryId": 2, "name": "Casa", "color": "#6CCBFF", "total": 722.40 },
+    { "categoryId": 3, "name": "Trasporti", "color": "#FFE45C", "total": 99.00 }
   ]
 }
 ```
@@ -131,6 +134,30 @@ Formato `ProblemDetail` (RFC 9457):
 - `400`: validazione fallita o `month` non valido; il campo `errors` contiene `{campo: messaggio}`, con messaggi in italiano.
 - `404`: risorsa (o `categoryId`) inesistente.
 - `409`: nome di categoria duplicato, oppure categoria in uso al momento dell'eliminazione.
+
+## 5bis. Verifica dell'API sulle schermate
+
+Ogni dato delle schermate definite in `docs/design/stitch-prompt.md` è coperto da un endpoint o si calcola nel frontend.
+
+| Schermata | Dati | Fonte |
+|---|---|---|
+| Mese | speso, budget, "da settembre", rimanente / "Superato di …" | `GET /summary` (`total`, `budget`, `budgetSourceMonth`, `remaining`) |
+| Mese | ripartizione per categoria con colore | `GET /summary` (`byCategory`) |
+| Mese | elenco per giorno, totali del giorno | `GET /expenses?month=` + raggruppamento nel FE |
+| Mese | giorni restanti, percentuali, filtro per categoria, spesa appena salvata | calcolo e stato nel FE |
+| Nuova / Modifica spesa | chip delle categorie | `GET /categories` |
+| Nuova / Modifica spesa | lettura, salvataggio, eliminazione | `GET/POST/PUT/DELETE /expenses` |
+| Categorie | nome, colore, **"14 spese"** | `GET /categories` (`expenseCount`, aggiunto dopo la verifica) |
+| Categorie | errore di eliminazione | `DELETE /categories/{id}` → `409` |
+| Budget | budget proprio o ereditato, "Rimuovi" disattivato | `GET /budgets/{month}` (`sourceMonth ≠ month` ⇒ ereditato) |
+| Budget | anteprima "ti rimarrebbero …" | `total` già caricato da `GET /summary` |
+| Stati | mese vuoto, server irraggiungibile | risposta vuota / errore di rete gestiti nel FE |
+
+**Regole di calcolo nel frontend**
+- **Giorni restanti:** mese corrente = dal giorno di oggi (incluso) alla fine del mese; mese passato = 0; mese futuro = tutti i giorni del mese.
+- **Quota per categoria** = `total` della categoria / `total` del mese.
+- **Spesa appena salvata:** il FE ricorda l'`id` restituito dal `POST` e la evidenzia nell'elenco finché non scorre fuori dalla vista.
+- **Data rapida:** "Oggi" e "Ieri" sono calcolati sul fuso orario del telefono; "Altra data…" apre il selettore nativo.
 
 ## 6. Backend
 
@@ -187,8 +214,8 @@ docs/
 
 ## Prossimi passi
 
-1. Revisione di questa spec da parte dell'utente.
-2. Impeccable → `PRODUCT.md` e `DESIGN.md` (seed) nella radice; scelto il mondo visivo "Diario scolastico".
-3. Prompt per Stitch → `docs/design/stitch-prompt.md`; l'utente genera le schermate e le mette in `docs/design/stitch/`.
-4. Verifica dei paragrafi 4–5 sulle schermate (per esempio icona della categoria, dati extra nel riepilogo); la spec passa da "bozza" ad "approvata".
-5. Piano di implementazione (BE in TDD, poi FE).
+1. ~~Revisione di questa spec da parte dell'utente.~~ Fatto.
+2. ~~Impeccable → `PRODUCT.md` e `DESIGN.md` (seed) nella radice; scelto il mondo visivo "Diario scolastico".~~ Fatto.
+3. ~~Prompt per Stitch → `docs/design/stitch-prompt.md`.~~ Fatto. Le schermate vanno generate quando Stitch torna disponibile (progetto "Diario spese" con il design system già caricato) ed esportate in `docs/design/stitch/` **prima dell'implementazione del frontend**.
+4. ~~Verifica dei paragrafi 4–5 sui contenuti delle schermate.~~ Fatto (paragrafo 5bis): aggiunto `expenseCount` alle categorie.
+5. Approvazione della spec da parte dell'utente, poi piano di implementazione (BE in TDD, poi FE).
