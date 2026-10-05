@@ -27,6 +27,12 @@ class MonthsTest {
     }
 
     @Test
+    void rejectsExtendedYears() {
+        assertThatThrownBy(() -> Months.parse("+10000-01")).isInstanceOf(InvalidMonthException.class);
+        assertThatThrownBy(() -> Months.parse("-2026-10")).isInstanceOf(InvalidMonthException.class);
+    }
+
+    @Test
     void rejectsNull() {
         assertThatThrownBy(() -> Months.parse(null)).isInstanceOf(InvalidMonthException.class);
     }

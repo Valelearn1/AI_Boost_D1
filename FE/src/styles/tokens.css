@@ -1,0 +1,34 @@
+/* Token di DESIGN.md — "Il diario di scuola" */
+:root {
+  --cover: #1f3db0;
+  --paper: #ffffff;
+  --paper-cool: #f4f6fb;
+  --ink: #15171c;
+  --pencil: #5a6070;
+  --hairline: #dde1ea;
+  --error: #c8102e;
+  --on-cover: #ffffff;
+  --on-cover-muted: rgb(255 255 255 / 0.82);
+  --on-cover-rule: rgb(255 255 255 / 0.3);
+
+  --hl-yellow: #ffe45c;
+  --hl-coral: #ff8f7a;
+
+  --font: 'Archivo Variable', 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --stretch-condensed: 72%;
+
+  --radius-sm: 2px;
+  --radius-md: 6px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  --tap: 44px;
+  --content: 560px;
+  --tabbar: 64px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}

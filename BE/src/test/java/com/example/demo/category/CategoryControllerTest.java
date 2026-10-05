@@ -102,6 +102,16 @@ class CategoryControllerTest {
     }
 
     @Test
+    void acceptsNameOf30CharactersPlusOuterSpaces() throws Exception {
+        mvc.perform(post("/api/categories").contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"name": " %s ", "color": "#6CCBFF"}
+                                """.formatted("x".repeat(30))))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.name").value("x".repeat(30)));
+    }
+
+    @Test
     void updatesCategory() throws Exception {
         mvc.perform(put("/api/categories/{id}", casa.getId()).contentType(MediaType.APPLICATION_JSON)
                         .content("""

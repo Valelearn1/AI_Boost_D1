@@ -2,6 +2,7 @@ package com.example.demo.summary;
 
 import com.example.demo.budget.BudgetResponse;
 import com.example.demo.budget.BudgetService;
+import com.example.demo.common.Money;
 import com.example.demo.expense.CategoryTotal;
 import com.example.demo.expense.ExpenseRepository;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class SummaryService {
         List<CategoryTotal> byCategory = expenses.totalsPerCategory(month.atDay(1), month.atEndOfMonth());
         BigDecimal total = byCategory.stream()
                 .map(CategoryTotal::total)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+                .reduce(Money.ZERO, BigDecimal::add);
         BudgetResponse budget = budgets.effective(month);
         BigDecimal remaining = budget.amount() == null ? null : budget.amount().subtract(total);
         return new SummaryResponse(month.toString(), total, budget.amount(), budget.sourceMonth(), remaining, byCategory);

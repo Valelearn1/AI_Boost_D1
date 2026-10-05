@@ -79,3 +79,44 @@ Spec di riferimento: [`superpowers/specs/2026-10-05-gestione-spese-design.md`](s
 - **Decisione:** `GET/POST/PUT /categories` restituiscono anche `expenseCount` (spese totali della categoria, su tutti i mesi).
 - **Perché:** la schermata Categorie mostra "14 spese" e il conteggio permette di prevedere il blocco dell'eliminazione (D-006) senza tentare la `DELETE`.
 - **Alternative scartate:** un endpoint separato per i conteggi (una chiamata in più per una sola schermata); nessun conteggio (l'utente scoprirebbe il blocco solo dopo aver tentato di eliminare).
+
+### D-016 · 2026-10-05 · Frontend costruito direttamente in codice (Stitch abbandonato)
+- **Decisione:** il frontend si implementa direttamente in React partendo da `DESIGN.md`, dal contratto di direzione (`.impeccable/surfaces/fe-src-app-tsx.md`) e dai contenuti delle schermate nei prompt (`docs/design/stitch-prompt.md`, usati come specifica funzionale). La verifica visiva si fa a fine build: screenshot mobile e desktop, detector e revisione finale di Impeccable, poi rigenerazione di `DESIGN.md`. Sostituisce il passaggio Stitch di D-009 e D-014.
+- **Perché:** Stitch ha fallito tutte le generazioni (timeout dall'interfaccia e dal connettore). Il percorso code-led è quello già registrato da Impeccable per questo progetto.
+- **Alternative scartate:** prototipo HTML navigabile da approvare sul telefono prima del React (un passaggio in più); aspettare Stitch (frontend bloccato a tempo indeterminato).
+- **Conseguenza:** la grafica si vede solo a frontend costruito; le correzioni visive passano dalla revisione finale di Impeccable.
+
+### D-017 · 2026-10-05 · Scelte di implementazione del frontend
+- **Decisione:** React 19 + Vite 8 + `react-router` 8 (modalità dichiarativa), CSS puro con i token di `DESIGN.md`, font Archivo variabile in self-hosting (`@fontsource-variable/archivo`, asse di larghezza per i numeri condensati). Test con Vitest + Testing Library: API simulata e routing reale, "oggi" fissato al 5 ottobre 2026.
+- **Dettagli emersi in implementazione:**
+  - `Intl.NumberFormat('it-IT')` non mette il separatore delle migliaia nei numeri di 4 cifre; si usa `useGrouping: 'always'` per avere "1.200,00 €".
+  - Gli importi si possono scrivere all'italiana ("12,50", "1.234,56", "1.200") o con il punto ("12.50"); al massimo 2 decimali.
+  - Il backend spento (il proxy di Vite risponde 50x senza corpo) produce sempre il messaggio "Impossibile raggiungere il server", con "Riprova".
+  - "Salva" non invia due volte con un doppio tocco.
+  - La spesa appena salvata viene portata in vista ed evidenziata una sola volta: lo stato si toglie dalla cronologia, quindi tornando indietro non si ripete.
+  - Il mese si legge da `/?mese=AAAA-MM`; un valore non valido porta al mese corrente.
+- **Revisione di design (Impeccable):** due tornate. Corretti: la categoria scelta come passata di evidenziatore e non come riquadro pieno, la ripartizione più compatta (il primo giorno è visibile già nel primo schermo), il budget riconoscibile come modificabile (icona matita), i titoli di sezione distinti dalle etichette dei campi, il contrasto dei placeholder, "Rimuovi il budget" mostrato solo quando c'è un budget proprio, l'animazione della barra a 220ms.
+- **Verifica visiva:** screenshot con viewport reale 390×844 e 1440×900 in `.impeccable/review/`, che sostituiscono le schermate di Stitch come riferimento visivo.
+
+### D-018 · 2026-10-05 · Animazioni con Motion, React Bits e Animate UI (anche decorative)
+- **Decisione:** Motion (`motion` 14) è la base delle animazioni. Da React Bits (varianti TS-CSS) e Animate UI (primitive) si copiano singoli componenti in `FE/src/components/vendor/`, adattati e senza Tailwind né `shadcn init`. Sostituisce la regola "nessuna animazione decorativa" del design system.
+  - *Funzionali:* mese che si sfoglia nella direzione scelta, totale a cifre rotanti (Animate UI Sliding Number), anteprima del budget che segue la cifra (React Bits CountUp), righe che si chiudono filtrando, avvisi e conferme che si aprono in altezza.
+  - *Decorative (scelte dall'utente):* griglia viva sulla copertina (ShapeGrid), titoli che si rivelano (BlurText), giorni a cascata, scintille su "+" e "Salva" (ClickSpark).
+- **Perché:** richiesta dell'utente. Le librerie scelte funzionano senza Tailwind (stili inline o CSS puro), quindi il CSS del progetto (D-017) resta com'è.
+- **Adattamenti al codice copiato:**
+  - Sliding Number: molla più rapida con soglia di arrivo, perché l'originale impiegava oltre 3 s ad assestarsi.
+  - ShapeGrid: senza vignettatura scura, ferma con "riduci movimento".
+  - ClickSpark: scintille solo sugli elementi `data-spark`, su un livello fisso grande quanto lo schermo.
+  - BlurText: dentro un titolo e nascosto agli screen reader.
+  - CountUp: formato euro italiano.
+- **Accessibilità:** `MotionConfig reducedMotion="user"`. Ogni testo animato ha una copia leggibile per gli screen reader. Nei test le animazioni sono istantanee (`MotionGlobalConfig.skipAnimations`) e le API del browser mancanti in jsdom sono simulate.
+- **Costo:** bundle JS da 257 a 408 kB (131 kB compressi).
+
+### D-019 · 2026-10-05 · Rifiniture del backend dopo la revisione
+- **Decisione:** risolti i 5 punti minori rimandati dalla revisione del backend:
+  - un importo oltre 99.999.999,99 riceve "L'importo è troppo grande";
+  - un id decimale viene rifiutato (`accept-float-as-int=false`), non più troncato;
+  - un mese con anno a più di 4 cifre dà 400 invece di 500;
+  - nomi e descrizioni vengono ripuliti dagli spazi esterni prima del controllo di lunghezza;
+  - gli importi nelle risposte hanno sempre 2 decimali.
+- **Nota:** l'impostazione Jackson va ripetuta in `src/test/resources/application.properties`, che nei test sostituisce il file principale.

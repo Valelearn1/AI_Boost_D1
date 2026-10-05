@@ -1,0 +1,514 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-05T15:32:08+00:00",
+  "title": "Design System: Diario spese",
+  "extensions": {
+    "colorMeta": {
+      "cover": {
+        "role": "primary",
+        "displayName": "Blu copertina",
+        "canonical": "#1f3db0",
+        "tonalRamp": [
+          "oklch(15% 0.102 266)",
+          "oklch(26% 0.136 266)",
+          "oklch(38% 0.173 266)",
+          "oklch(50% 0.185 266)",
+          "oklch(62% 0.185 266)",
+          "oklch(74% 0.167 266)",
+          "oklch(86% 0.130 266)",
+          "oklch(95% 0.102 266)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Carta",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0.000 90)",
+          "oklch(26% 0.000 90)",
+          "oklch(38% 0.000 90)",
+          "oklch(50% 0.000 90)",
+          "oklch(62% 0.000 90)",
+          "oklch(74% 0.000 90)",
+          "oklch(86% 0.000 90)",
+          "oklch(95% 0.000 90)"
+        ]
+      },
+      "paper-cool": {
+        "role": "neutral",
+        "displayName": "Carta fredda",
+        "canonical": "#f4f6fb",
+        "tonalRamp": [
+          "oklch(15% 0.007 269)",
+          "oklch(26% 0.007 269)",
+          "oklch(38% 0.007 269)",
+          "oklch(50% 0.007 269)",
+          "oklch(62% 0.007 269)",
+          "oklch(74% 0.007 269)",
+          "oklch(86% 0.007 269)",
+          "oklch(95% 0.007 269)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Inchiostro",
+        "canonical": "#15171c",
+        "tonalRamp": [
+          "oklch(15% 0.010 268)",
+          "oklch(26% 0.010 268)",
+          "oklch(38% 0.010 268)",
+          "oklch(50% 0.010 268)",
+          "oklch(62% 0.010 268)",
+          "oklch(74% 0.010 268)",
+          "oklch(86% 0.010 268)",
+          "oklch(95% 0.010 268)"
+        ]
+      },
+      "pencil": {
+        "role": "neutral",
+        "displayName": "Matita",
+        "canonical": "#5a6070",
+        "tonalRamp": [
+          "oklch(15% 0.027 269)",
+          "oklch(26% 0.027 269)",
+          "oklch(38% 0.027 269)",
+          "oklch(50% 0.027 269)",
+          "oklch(62% 0.027 269)",
+          "oklch(74% 0.027 269)",
+          "oklch(86% 0.027 269)",
+          "oklch(95% 0.027 269)"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Filetto",
+        "canonical": "#dde1ea",
+        "tonalRamp": [
+          "oklch(15% 0.013 267)",
+          "oklch(26% 0.013 267)",
+          "oklch(38% 0.013 267)",
+          "oklch(50% 0.013 267)",
+          "oklch(62% 0.013 267)",
+          "oklch(74% 0.013 267)",
+          "oklch(86% 0.013 267)",
+          "oklch(95% 0.013 267)"
+        ]
+      },
+      "error": {
+        "role": "error",
+        "displayName": "Rosso conto",
+        "canonical": "#c8102e",
+        "tonalRamp": [
+          "oklch(15% 0.109 22)",
+          "oklch(26% 0.147 22)",
+          "oklch(38% 0.189 22)",
+          "oklch(50% 0.207 22)",
+          "oklch(62% 0.207 22)",
+          "oklch(74% 0.182 22)",
+          "oklch(86% 0.140 22)",
+          "oklch(95% 0.109 22)"
+        ]
+      },
+      "on-cover": {
+        "role": "neutral",
+        "displayName": "Bianco su copertina",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0.000 90)",
+          "oklch(26% 0.000 90)",
+          "oklch(38% 0.000 90)",
+          "oklch(50% 0.000 90)",
+          "oklch(62% 0.000 90)",
+          "oklch(74% 0.000 90)",
+          "oklch(86% 0.000 90)",
+          "oklch(95% 0.000 90)"
+        ]
+      },
+      "hl-green": {
+        "role": "secondary",
+        "displayName": "Verde evidenziatore",
+        "canonical": "#7ee08a",
+        "tonalRamp": [
+          "oklch(15% 0.090 147)",
+          "oklch(26% 0.118 147)",
+          "oklch(38% 0.148 147)",
+          "oklch(50% 0.151 147)",
+          "oklch(62% 0.151 147)",
+          "oklch(74% 0.143 147)",
+          "oklch(86% 0.113 147)",
+          "oklch(95% 0.090 147)"
+        ]
+      },
+      "hl-sky": {
+        "role": "secondary",
+        "displayName": "Azzurro evidenziatore",
+        "canonical": "#6ccbff",
+        "tonalRamp": [
+          "oklch(15% 0.079 235)",
+          "oklch(26% 0.100 235)",
+          "oklch(38% 0.116 235)",
+          "oklch(50% 0.116 235)",
+          "oklch(62% 0.116 235)",
+          "oklch(74% 0.116 235)",
+          "oklch(86% 0.096 235)",
+          "oklch(95% 0.079 235)"
+        ]
+      },
+      "hl-yellow": {
+        "role": "secondary",
+        "displayName": "Giallo evidenziatore",
+        "canonical": "#ffe45c",
+        "tonalRamp": [
+          "oklch(15% 0.092 98)",
+          "oklch(26% 0.120 98)",
+          "oklch(38% 0.151 98)",
+          "oklch(50% 0.155 98)",
+          "oklch(62% 0.155 98)",
+          "oklch(74% 0.146 98)",
+          "oklch(86% 0.115 98)",
+          "oklch(95% 0.092 98)"
+        ]
+      },
+      "hl-orange": {
+        "role": "secondary",
+        "displayName": "Arancio evidenziatore",
+        "canonical": "#ffb050",
+        "tonalRamp": [
+          "oklch(15% 0.088 68)",
+          "oklch(26% 0.114 68)",
+          "oklch(38% 0.143 68)",
+          "oklch(50% 0.143 68)",
+          "oklch(62% 0.143 68)",
+          "oklch(74% 0.138 68)",
+          "oklch(86% 0.109 68)",
+          "oklch(95% 0.088 68)"
+        ]
+      },
+      "hl-pink": {
+        "role": "secondary",
+        "displayName": "Rosa evidenziatore",
+        "canonical": "#ff8ac2",
+        "tonalRamp": [
+          "oklch(15% 0.091 351)",
+          "oklch(26% 0.120 351)",
+          "oklch(38% 0.151 351)",
+          "oklch(50% 0.154 351)",
+          "oklch(62% 0.154 351)",
+          "oklch(74% 0.145 351)",
+          "oklch(86% 0.115 351)",
+          "oklch(95% 0.091 351)"
+        ]
+      },
+      "hl-teal": {
+        "role": "secondary",
+        "displayName": "Turchese evidenziatore",
+        "canonical": "#5fe0d2",
+        "tonalRamp": [
+          "oklch(15% 0.079 185)",
+          "oklch(26% 0.100 185)",
+          "oklch(38% 0.116 185)",
+          "oklch(50% 0.116 185)",
+          "oklch(62% 0.116 185)",
+          "oklch(74% 0.116 185)",
+          "oklch(86% 0.096 185)",
+          "oklch(95% 0.079 185)"
+        ]
+      },
+      "hl-grey": {
+        "role": "secondary",
+        "displayName": "Grigio evidenziatore (Altro)",
+        "canonical": "#d4d8e0",
+        "tonalRamp": [
+          "oklch(15% 0.012 265)",
+          "oklch(26% 0.012 265)",
+          "oklch(38% 0.012 265)",
+          "oklch(50% 0.012 265)",
+          "oklch(62% 0.012 265)",
+          "oklch(74% 0.012 265)",
+          "oklch(86% 0.012 265)",
+          "oklch(95% 0.012 265)"
+        ]
+      },
+      "hl-coral": {
+        "role": "secondary",
+        "displayName": "Corallo evidenziatore",
+        "canonical": "#ff8f7a",
+        "tonalRamp": [
+          "oklch(15% 0.087 32)",
+          "oklch(26% 0.112 32)",
+          "oklch(38% 0.140 32)",
+          "oklch(50% 0.140 32)",
+          "oklch(62% 0.140 32)",
+          "oklch(74% 0.135 32)",
+          "oklch(86% 0.108 32)",
+          "oklch(95% 0.087 32)"
+        ]
+      },
+      "hl-lilac": {
+        "role": "secondary",
+        "displayName": "Lilla evidenziatore",
+        "canonical": "#c7a6ff",
+        "tonalRamp": [
+          "oklch(15% 0.083 301)",
+          "oklch(26% 0.106 301)",
+          "oklch(38% 0.128 301)",
+          "oklch(50% 0.128 301)",
+          "oklch(62% 0.128 301)",
+          "oklch(74% 0.127 301)",
+          "oklch(86% 0.102 301)",
+          "oklch(95% 0.083 301)"
+        ]
+      },
+      "hl-lime": {
+        "role": "secondary",
+        "displayName": "Lime evidenziatore",
+        "canonical": "#c6e85a",
+        "tonalRamp": [
+          "oklch(15% 0.097 121)",
+          "oklch(26% 0.128 121)",
+          "oklch(38% 0.162 121)",
+          "oklch(50% 0.171 121)",
+          "oklch(62% 0.171 121)",
+          "oklch(74% 0.157 121)",
+          "oklch(86% 0.123 121)",
+          "oklch(95% 0.097 121)"
+        ]
+      },
+      "on-cover-muted": {
+        "role": "neutral",
+        "displayName": "Bianco su copertina, attenuato",
+        "canonical": "rgb(255 255 255 / 0.82)"
+      },
+      "on-cover-rule": {
+        "role": "neutral",
+        "displayName": "Filetto su copertina",
+        "canonical": "rgb(255 255 255 / 0.3)"
+      }
+    },
+    "typographyMeta": {
+      "display-input": {
+        "displayName": "Display input",
+        "purpose": "L'importo digitato nel form di spesa e di budget; 48px nella variante compatta."
+      },
+      "display": {
+        "displayName": "Display",
+        "purpose": "L'importo speso del mese sulla copertina."
+      },
+      "numeral-day": {
+        "displayName": "Numerale giorno",
+        "purpose": "Il numero del giorno nella colonna da 56px della fascia."
+      },
+      "headline": {
+        "displayName": "Titolo di sezione",
+        "purpose": "Titoli delle sezioni nella pagina, condensato 800 inchiostro."
+      },
+      "title": {
+        "displayName": "Titolo copertina",
+        "purpose": "Mese o nome della schermata, centrato nella copertina."
+      },
+      "body": {
+        "displayName": "Corpo",
+        "purpose": "Descrizioni, campi, righe; importi delle righe in 600."
+      },
+      "body-small": {
+        "displayName": "Corpo piccolo",
+        "purpose": "Aiuti, totale del giorno, conteggi, errori dei campi (600)."
+      },
+      "label": {
+        "displayName": "Etichetta",
+        "purpose": "Etichette dei campi e dei fatti, maiuscolo +0.04em; schede e giorno della settimana senza maiuscolo."
+      }
+    },
+    "shadows": [
+      {
+        "name": "focus-ring-add",
+        "value": "0 0 0 6px var(--cover)",
+        "purpose": "Anello di focus del pulsante \"+\", fuori dall'anello carta da 4px; unica box-shadow di stato."
+      },
+      {
+        "name": "hairline-inset",
+        "value": "inset 0 0 0 1px var(--hairline)",
+        "purpose": "Filetto del binario della barra del budget su carta; bordo, non profondità."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Unica curva del sistema."
+      },
+      {
+        "name": "swipe-in",
+        "value": "scaleX(0) → scaleX(1), 220ms ease-out, origine a sinistra",
+        "purpose": "La passata quando nasce: chip scelto, barra del budget, spesa appena salvata. Nessuna animazione con prefers-reduced-motion."
+      },
+      {
+        "name": "dim",
+        "value": "opacity 180ms ease-out (0.35)",
+        "purpose": "Attenuazione delle altre righe della ripartizione quando si sceglie una categoria."
+      },
+      {
+        "name": "hover-brightness",
+        "value": "filter: brightness(1.12)",
+        "purpose": "Passaggio del puntatore sui pulsanti pieni e sul \"+\", solo con (hover: hover)."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "reference",
+        "value": "390px"
+      },
+      {
+        "name": "content-max",
+        "value": "560px"
+      }
+    ],
+    "layout": {
+      "tap": "44px",
+      "tabbar": "64px",
+      "dayGutter": "56px",
+      "sectionGap": "32px",
+      "pageInline": "16px"
+    }
+  },
+  "components": [
+    {
+      "name": "Pulsante primario",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Azione principale del form, blu copertina a tutta larghezza.",
+      "html": "<button class=\"ds-btn-primary\">Salva spesa</button>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; justify-content:center; width:100%; min-height:52px; padding:0 16px; background:var(--cover,#1f3db0); color:var(--on-cover,#fff); border:1px solid transparent; border-radius:6px; font-family:'Archivo Variable', 'Archivo', system-ui, sans-serif; font-size:16px; font-weight:600; cursor:pointer; } .ds-btn-primary:hover { filter:brightness(1.12); } .ds-btn-primary:focus-visible { outline:2px solid var(--cover,#1f3db0); outline-offset:2px; } .ds-btn-primary:disabled { opacity:.4; cursor:default; }"
+    },
+    {
+      "name": "Pulsante secondario",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Azione alternativa: carta con bordo e testo blu.",
+      "html": "<button class=\"ds-btn-secondary\">Imposta budget</button>",
+      "css": ".ds-btn-secondary { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:0 16px; background:var(--paper,#fff); color:var(--cover,#1f3db0); border:1px solid var(--cover,#1f3db0); border-radius:6px; font-family:'Archivo Variable', 'Archivo', system-ui, sans-serif; font-size:16px; font-weight:600; cursor:pointer; } .ds-btn-secondary:hover { background:var(--paper-cool,#f4f6fb); } .ds-btn-secondary:focus-visible { outline:2px solid var(--cover,#1f3db0); outline-offset:2px; }"
+    },
+    {
+      "name": "Pulsante di eliminazione",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Conferma di un'eliminazione, dentro un riquadro di conferma nella pagina.",
+      "html": "<button class=\"ds-btn-danger\">Elimina</button>",
+      "css": ".ds-btn-danger { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:0 16px; background:var(--error,#c8102e); color:#fff; border:1px solid transparent; border-radius:6px; font-family:'Archivo Variable', 'Archivo', system-ui, sans-serif; font-size:16px; font-weight:600; cursor:pointer; } .ds-btn-danger:hover { filter:brightness(1.12); } .ds-btn-danger:focus-visible { outline:2px solid var(--cover,#1f3db0); outline-offset:2px; }"
+    },
+    {
+      "name": "Campo di testo",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Campo su carta fredda con etichetta maiuscola in matita; bordo blu a fuoco.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Descrizione</span><input class=\"ds-field-input\" placeholder=\"Es. spesa al mercato\"></label>",
+      "css": ".ds-field { display:grid; gap:8px; font-family:'Archivo Variable', 'Archivo', system-ui, sans-serif; } .ds-field-label { font-size:12px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--pencil,#5a6070); } .ds-field-input { min-height:44px; padding:12px 16px; background:var(--paper-cool,#f4f6fb); color:var(--ink,#15171c); border:1px solid transparent; border-radius:6px; font:inherit; font-size:16px; } .ds-field-input::placeholder { color:var(--pencil,#5a6070); } .ds-field-input:focus { outline:none; border-color:var(--cover,#1f3db0); }"
+    },
+    {
+      "name": "Campo importo",
+      "kind": "input",
+      "refersTo": "display-input",
+      "description": "Importo in numerale condensato 64px su una riga di base da 2px.",
+      "html": "<label class=\"ds-amount\"><input class=\"ds-amount-value\" inputmode=\"decimal\" placeholder=\"0,00\"><span class=\"ds-amount-cur\">€</span></label>",
+      "css": ".ds-amount { display:flex; align-items:baseline; gap:8px; border-bottom:2px solid var(--hairline,#dde1ea); font-family:'Archivo Variable', 'Archivo', system-ui, sans-serif; } .ds-amount:focus-within { border-bottom-color:var(--cover,#1f3db0); } .ds-amount-value { flex:1; min-width:0; padding:0; border:0; background:none; font:inherit; font-size:64px; font-weight:800; font-stretch:72%; line-height:1.1; font-variant-numeric:tabular-nums; color:var(--ink,#15171c); } .ds-amount-value:focus { outline:none; } .ds-amount-value::placeholder { color:var(--pencil,#5a6070); opacity:1; } .ds-amount-cur { font-size:32px; font-weight:700; color:var(--pencil,#5a6070); }"
+    },
+    {
+      "name": "Chip di categoria",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "A riposo un tratto al 22%; scelto, la passata piena al 70% che si traccia da sinistra.",
+      "html": "<div class=\"ds-chips\"><label class=\"ds-chip\"><input type=\"radio\" name=\"c\" checked><span class=\"ds-chip-name\" style=\"--swipe:#7ee08a\">Spesa</span></label><label class=\"ds-chip\"><input type=\"radio\" name=\"c\"><span class=\"ds-chip-name\" style=\"--swipe:#6ccbff\">Casa</span></label><label class=\"ds-chip\"><input type=\"radio\" name=\"c\"><span class=\"ds-chip-name\" style=\"--swipe:#ffe45c\">Trasporti</span></label></div>",
+      "css": ".ds-chips { display:flex; flex-wrap:wrap; gap:4px 8px; font-family:'Archivo Variable', 'Archivo', system-ui, sans-serif; color:var(--ink,#15171c); } .ds-chip { display:inline-flex; align-items:center; min-height:44px; padding:0 12px; border-radius:2px; cursor:pointer; } .ds-chip input { position:absolute; opacity:0; width:1px; height:1px; } .ds-chip:hover { background:var(--paper-cool,#f4f6fb); } .ds-chip:has(input:focus-visible) { outline:2px solid var(--cover,#1f3db0); outline-offset:2px; } .ds-chip-name { position:relative; z-index:0; padding-inline:.25em; margin-inline:-.25em; } .ds-chip-name::before { content:''; position:absolute; z-index:-1; inset:auto 0 .08em 0; height:22%; background:var(--swipe); border-radius:2px; transform-origin:left center; } .ds-chip:has(input:checked) .ds-chip-name { font-weight:600; } .ds-chip:has(input:checked) .ds-chip-name::before { height:70%; animation:ds-swipe 220ms cubic-bezier(.16,1,.3,1) both; } @keyframes ds-swipe { from { transform:scaleX(0); } to { transform:scaleX(1); } } @media (prefers-reduced-motion: reduce) { .ds-chip:has(input:checked) .ds-chip-name::before { animation:none; } }"
+    },
+    {
+      "name": "Passata di evidenziatore",
+      "kind": "custom",
+      "refersTo": "hl-yellow",
+      "description": "Il gesto distintivo: colore di categoria piatto dietro al 70% inferiore del testo.",
+      "html": "<p class=\"ds-swipe-demo\">Pranzo <span class=\"ds-swipe\" style=\"--swipe:#ffb050\">Ristoranti</span> <span class=\"ds-amt\">1.200,00 €</span></p>",
+      "css": ".ds-swipe-demo { font-family:'Archivo Variable', 'Archivo', system-ui, sans-serif; font-size:16px; color:var(--ink,#15171c); } .ds-amt { font-weight:600; font-variant-numeric:tabular-nums; } .ds-swipe { position:relative; z-index:0; padding-inline:.25em; margin-inline:0 .25em; -webkit-box-decoration-break:clone; box-decoration-break:clone; } .ds-swipe::before { content:''; position:absolute; z-index:-1; inset:auto 0 .08em 0; height:70%; background:var(--swipe); border-radius:2px; transform-origin:left center; animation:ds-swipe-in 220ms cubic-bezier(.16,1,.3,1) both; } @keyframes ds-swipe-in { from { transform:scaleX(0); } to { transform:scaleX(1); } } @media (prefers-reduced-motion: reduce) { .ds-swipe::before { animation:none; } }"
+    },
+    {
+      "name": "Copertina con barra del budget",
+      "kind": "card",
+      "refersTo": "cover-header",
+      "description": "Testata blu con importo display condensato, fatti in riga e barra gialla su binario bianco al 20%.",
+      "html": "<header class=\"ds-cover\"><p class=\"ds-cover-label\">Speso</p><p class=\"ds-cover-total\">842,50 €</p><div class=\"ds-cover-bar\"><span style=\"width:70%\"></span></div></header>",
+      "css": ".ds-cover { display:grid; gap:8px; padding:16px 16px 24px; background:var(--cover,#1f3db0); color:#fff; font-family:'Archivo Variable', 'Archivo', system-ui, sans-serif; } .ds-cover-label { margin:0; font-size:12px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:rgb(255 255 255 / .82); } .ds-cover-total { margin:0; font-size:56px; font-weight:800; font-stretch:72%; line-height:1; letter-spacing:-.01em; font-variant-numeric:tabular-nums; } .ds-cover-bar { position:relative; height:10px; border-radius:2px; overflow:hidden; background:rgb(255 255 255 / .2); } .ds-cover-bar span { position:absolute; inset:0 auto 0 0; background:var(--hl-yellow,#ffe45c); border-radius:2px; transform-origin:left center; animation:ds-bar 220ms cubic-bezier(.16,1,.3,1) both; } @keyframes ds-bar { from { transform:scaleX(0); } to { transform:scaleX(1); } } @media (prefers-reduced-motion: reduce) { .ds-cover-bar span { animation:none; } }"
+    },
+    {
+      "name": "Barra in basso",
+      "kind": "nav",
+      "refersTo": "tabbar",
+      "description": "Mese · + · Categorie, con il cerchio blu da 56px alzato sopra il filetto e anello carta.",
+      "html": "<nav class=\"ds-tabbar\"><a class=\"ds-tab is-active\" href=\"#\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3.5\" y=\"5\" width=\"17\" height=\"15.5\" rx=\"1.5\"/><path d=\"M3.5 10h17M8 3v4M16 3v4\"/></svg><span>Mese</span></a><a class=\"ds-add\" href=\"#\" aria-label=\"Nuova spesa\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M12 5v14M5 12h14\"/></svg></a><a class=\"ds-tab\" href=\"#\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20.4 13.6l-6.8 6.8a1.6 1.6 0 0 1-2.3 0L3.5 12.6V3.5h9.1l7.8 7.8a1.6 1.6 0 0 1 0 2.3z\"/><path d=\"M8 8h.01\"/></svg><span>Categorie</span></a></nav>",
+      "css": ".ds-tabbar { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; height:64px; margin-top:32px; padding-inline:16px; background:var(--paper,#fff); border-top:1px solid var(--hairline,#dde1ea); font-family:'Archivo Variable', 'Archivo', system-ui, sans-serif; } .ds-tab { display:grid; justify-items:center; justify-self:center; gap:2px; min-width:88px; padding:4px 8px; border-radius:6px; color:var(--pencil,#5a6070); font-size:12px; font-weight:600; text-decoration:none; } .ds-tab.is-active { color:var(--cover,#1f3db0); } .ds-tab:hover { color:var(--ink,#15171c); } .ds-tab:focus-visible { outline:2px solid var(--cover,#1f3db0); outline-offset:2px; } .ds-add { display:grid; place-items:center; width:56px; height:56px; margin-top:-28px; border-radius:50%; background:var(--cover,#1f3db0); color:#fff; outline:4px solid var(--paper,#fff); } .ds-add:hover { filter:brightness(1.12); } .ds-add:focus-visible { outline:4px solid var(--paper,#fff); box-shadow:0 0 0 6px var(--cover,#1f3db0); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Il diario di scuola",
+    "overview": "**Creative North Star: \"Il diario di scuola\"**\n\nIl mese si sfoglia come le pagine di un diario: una fascia per giorno con il numero grande, una copertina blu in alto, e le categorie segnate con l'evidenziatore. Il mondo presta all'interfaccia solo quattro cose: tipo, colore, densità e un unico gesto distintivo. Layout, navigazione e controlli restano quelli di una web app mobile, riconoscibili al primo tocco.\n\nIl sistema è chiaro, piatto e denso. La copertina blu porta il riepilogo del mese in un solo blocco compatto; la pagina bianca porta i dati, separati da filetti a 1px. Il tono è asciutto: superare il budget è un'informazione, non una colpa. Il tema è solo chiaro, pensato per il telefono in piena luce alla cassa.\n\nRifiuti confermati: card bianche arrotondate con ombra, grafici a ciambella, icone emoji tonde per le categorie, verde/rosso da banca, e ogni costume da cartoleria (carta a righe, adesivi, scarabocchi, font scritti a mano).",
+    "keyCharacteristics": [
+      "Un solo gesto distintivo: la passata di evidenziatore, piatta, dietro al 70% inferiore del testo.",
+      "Un solo carattere, Archivo variabile, in due larghezze: condensato (asse `wdth` al 72%) e nero per i numerali, normale per l'interfaccia.",
+      "Blu copertina come shell e come colore interattivo (la penna).",
+      "Piatto: nessuna ombra di elevazione, profondità solo da colore e filetti a 1px.",
+      "Densità alta: riepilogo in un blocco, righe con importi tabellari allineati a destra."
+    ],
+    "rules": [
+      {
+        "name": "The Highlighter Rule",
+        "body": "Gli evidenziatori sono sempre campiture piatte e piene con testo inchiostro sopra. Mai testo colorato evidenziatore su bianco, mai gradienti, mai sfumature.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Pen Rule",
+        "body": "Tutto ciò che si tocca e porta un colore usa il blu copertina; gli evidenziatori non sono mai colore di un'azione.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Ogni importo usa cifre tabellari (`tabular-nums`), allineato a destra, e passa sempre dallo stesso formattatore: euro italiano con separatore delle migliaia sempre attivo (`useGrouping: 'always'`), quindi \"1.200,00 €\", mai \"1200,00 €\".",
+        "section": "typography"
+      },
+      {
+        "name": "The Two Widths Rule",
+        "body": "Il condensato è per i numerali e per i titoli di sezione; tutto il resto è a larghezza normale. Un titolo di sezione (20px condensato 800 inchiostro) non si confonde mai con un'etichetta di campo (12px maiuscolo matita).",
+        "section": "typography"
+      },
+      {
+        "name": "The Density Rule",
+        "body": "Il riepilogo è un unico blocco compatto, mai tre card affiancate.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Rule",
+        "body": "Le superfici sono piatte in ogni stato. Il passaggio del puntatore cambia colore di fondo o luminosità (`brightness(1.12)` sui pulsanti pieni), mai l'altezza.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Hairline Rule",
+        "body": "Ogni separatore è un filetto da 1px color filetto; niente bordi spessi, niente riquadri dentro riquadri.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** usare la passata di evidenziatore come unico gesto distintivo, sempre nel colore della categoria e con testo inchiostro sopra.",
+      "**Do** animare la passata solo quando nasce (220ms, da sinistra a destra) e mostrarla già piena con `prefers-reduced-motion`.",
+      "**Do** formattare ogni importo con cifre tabellari e separatore delle migliaia sempre attivo (\"1.200,00 €\").",
+      "**Do** usare il condensato 800 per numerali e titoli di sezione, la larghezza normale per tutto il resto.",
+      "**Do** separare con filetti da 1px e tenere aree toccabili di almeno 44px.",
+      "**Do** lasciare evidenziata la spesa appena salvata, rivelata dopo averla portata in vista.",
+      "**Do** scrivere testi asciutti: \"Superato di\", \"Nessuna spesa a ottobre 2026.\", \"Non impostato\"."
+    ],
+    "donts": [
+      "**Don't** usare ombre di elevazione o gradienti; l'unica `box-shadow` di stato è l'anello di focus del pulsante \"+\".",
+      "**Don't** colorare il testo con un evidenziatore né usare un evidenziatore per un'azione.",
+      "**Don't** introdurre un tema scuro: il sistema è solo chiaro.",
+      "**Don't** usare card bianche arrotondate con ombra, grafici a ciambella o icone emoji tonde per le categorie.",
+      "**Don't** usare verde/rosso da banca per gli importi: qui esistono solo spese, e il superamento è corallo, non rosso.",
+      "**Don't** vestire l'interfaccia da cartoleria: niente carta a righe o a quadretti, adesivi, scarabocchi, font scritti a mano.",
+      "**Don't** usare modali per le conferme: stanno nella pagina, in un riquadro con filetto."
+    ]
+  }
+}

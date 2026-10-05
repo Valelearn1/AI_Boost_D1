@@ -17,8 +17,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.nullValue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -94,7 +96,7 @@ class SummaryControllerTest {
     void emptyMonthHasZeroTotalAndNoCategories() throws Exception {
         mvc.perform(get("/api/summary").param("month", "2026-12"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.total").value(0))
+                .andExpect(content().string(containsString("\"total\":0.00")))
                 .andExpect(jsonPath("$.byCategory.length()").value(0));
     }
 

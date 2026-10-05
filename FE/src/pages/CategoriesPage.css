@@ -1,0 +1,75 @@
+.category-list {
+  border-top: 1px solid var(--hairline);
+}
+
+.category-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 60px;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.category-row.is-editing {
+  display: block;
+  padding: var(--space-4) 0 var(--space-6);
+}
+
+.category-row__text {
+  display: grid;
+  gap: 2px;
+}
+
+.category-row__count {
+  font-size: 14px;
+  color: var(--pencil);
+}
+
+.category-editor {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.category-editor__actions {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-2);
+}
+
+.category-editor__actions .btn--primary {
+  min-height: var(--tap);
+}
+
+.category-editor__delete {
+  justify-self: start;
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(5, var(--tap));
+  gap: var(--space-3);
+}
+
+.swatch {
+  width: var(--tap);
+  height: var(--tap);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.swatch:has(input:checked) {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.swatch:has(input:focus-visible) {
+  outline: 2px solid var(--cover);
+  outline-offset: 3px;
+}
+
+.category-preview {
+  font-size: 18px;
+  font-weight: 600;
+}

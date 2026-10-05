@@ -12,4 +12,9 @@ public record CategoryRequest(
         @NotBlank(message = "Il colore è obbligatorio")
         @Pattern(regexp = "^#[0-9A-Fa-f]{6}$", message = "Il colore deve essere nel formato #RRGGBB")
         String color) {
+
+    /** Spazi esterni tolti prima della validazione: il limite di 30 caratteri vale sul nome vero. */
+    public CategoryRequest {
+        name = name == null ? null : name.strip();
+    }
 }

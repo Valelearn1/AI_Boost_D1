@@ -1,0 +1,99 @@
+.expense-form {
+  gap: var(--space-6);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-2);
+  margin-inline: calc(-1 * var(--space-3));
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Non scelta: solo un tratto sottile del colore, come la punta dell'evidenziatore appoggiata */
+.chip .chip__name::before {
+  height: 22%;
+}
+
+/* Scelta: la passata piena si traccia da sinistra a destra */
+.chip:has(input:checked) .chip__name {
+  font-weight: 600;
+}
+
+.chip:has(input:checked) .chip__name::before {
+  height: 70%;
+  animation: swipe-in 220ms var(--ease-out) both;
+}
+
+.chip:has(input:focus-visible) {
+  outline: 2px solid var(--cover);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  .chip:hover {
+    background: var(--paper-cool);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip:has(input:checked) .chip__name::before {
+    animation: none;
+  }
+}
+
+.segmented {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.segmented__option {
+  display: grid;
+  place-items: center;
+  min-height: var(--tap);
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+
+.segmented__option + .segmented__option {
+  border-left: 1px solid var(--hairline);
+}
+
+.segmented__option:has(input:checked) {
+  background: var(--cover);
+  color: var(--on-cover);
+}
+
+.segmented__option:has(input:focus-visible) {
+  outline: 2px solid var(--ink);
+  outline-offset: -4px;
+}
+
+/* Il salvataggio resta raggiungibile col pollice anche con la tastiera aperta */
+.form-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  margin-inline: calc(-1 * var(--space-4));
+  padding: var(--space-3) var(--space-4) calc(var(--space-3) + env(safe-area-inset-bottom));
+  background: var(--paper);
+  border-top: 1px solid var(--hairline);
+}
+
+.expense-form__delete {
+  justify-self: start;
+}

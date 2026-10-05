@@ -2,6 +2,7 @@ package com.example.demo.expense;
 
 import com.example.demo.category.Category;
 import com.example.demo.category.CategoryService;
+import com.example.demo.common.Money;
 import com.example.demo.common.NotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,13 +37,13 @@ public class ExpenseService {
     public ExpenseResponse create(ExpenseRequest request) {
         Category category = categoryService.find(request.categoryId());
         Expense saved = expenses.save(
-                new Expense(request.amount(), request.date(), normalize(request.description()), category));
+                new Expense(Money.cents(request.amount()), request.date(), normalize(request.description()), category));
         return ExpenseResponse.of(saved);
     }
 
     public ExpenseResponse update(Long id, ExpenseRequest request) {
         Expense expense = find(id);
-        expense.setAmount(request.amount());
+        expense.setAmount(Money.cents(request.amount()));
         expense.setDate(request.date());
         expense.setDescription(normalize(request.description()));
         expense.setCategory(categoryService.find(request.categoryId()));

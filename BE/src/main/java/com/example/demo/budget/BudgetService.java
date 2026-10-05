@@ -1,5 +1,6 @@
 package com.example.demo.budget;
 
+import com.example.demo.common.Money;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,8 +26,9 @@ public class BudgetService {
                 .orElse(new BudgetResponse(key, null, null));
     }
 
-    public BudgetResponse set(YearMonth month, BigDecimal amount) {
+    public BudgetResponse set(YearMonth month, BigDecimal requested) {
         String key = month.toString();
+        BigDecimal amount = Money.cents(requested);
         MonthlyBudget budget = budgets.findByMonth(key)
                 .orElseGet(() -> new MonthlyBudget(key, amount));
         budget.setAmount(amount);

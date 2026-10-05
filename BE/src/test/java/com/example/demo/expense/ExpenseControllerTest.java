@@ -14,11 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.nullValue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -110,6 +112,45 @@ class ExpenseControllerTest {
                     .andExpect(status().isBadRequest())
                     .andExpect(jsonPath("$.errors.amount").exists());
         }
+    }
+
+    @Test
+    void rejectsTooLargeAmountWithItsOwnMessage() throws Exception {
+        mvc.perform(post("/api/expenses").contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"amount": 100000000, "date": "2026-10-05", "categoryId": %d}
+                                """.formatted(casa.getId())))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.errors.amount").value("L'importo è troppo grande"));
+    }
+
+    @Test
+    void rejectsDecimalCategoryId() throws Exception {
+        mvc.perform(post("/api/expenses").contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"amount": 5, "date": "2026-10-05", "categoryId": %d.7}
+                                """.formatted(casa.getId())))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void acceptsDescriptionOf100CharactersPlusOuterSpaces() throws Exception {
+        mvc.perform(post("/api/expenses").contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"amount": 5, "date": "2026-10-05", "description": " %s ", "categoryId": %d}
+                                """.formatted("x".repeat(100), casa.getId())))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.description").value("x".repeat(100)));
+    }
+
+    @Test
+    void alwaysAnswersAmountsWithTwoDecimals() throws Exception {
+        mvc.perform(post("/api/expenses").contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"amount": 5, "date": "2026-10-05", "categoryId": %d}
+                                """.formatted(casa.getId())))
+                .andExpect(status().isCreated())
+                .andExpect(content().string(containsString("\"amount\":5.00")));
     }
 
     @Test

@@ -1,7 +1,7 @@
 # Gestione spese personali — design
 
 - **Data:** 2026-10-05
-- **Stato:** API verificata sui contenuti delle schermate (paragrafo 5bis), in attesa di approvazione. Le immagini di Stitch servono come riferimento visivo per il frontend.
+- **Stato:** approvata e implementata (backend e frontend). Decisioni di implementazione: D-016, D-017.
 - **Decisioni:** il registro completo è in [`docs/DECISIONS.md`](../../DECISIONS.md).
 
 ## 1. Obiettivo
@@ -216,6 +216,6 @@ docs/
 
 1. ~~Revisione di questa spec da parte dell'utente.~~ Fatto.
 2. ~~Impeccable → `PRODUCT.md` e `DESIGN.md` (seed) nella radice; scelto il mondo visivo "Diario scolastico".~~ Fatto.
-3. ~~Prompt per Stitch → `docs/design/stitch-prompt.md`.~~ Fatto. Le schermate vanno generate quando Stitch torna disponibile (progetto "Diario spese" con il design system già caricato) ed esportate in `docs/design/stitch/` **prima dell'implementazione del frontend**.
+3. ~~Prompt per Stitch → `docs/design/stitch-prompt.md`.~~ Fatto. Stitch non ha generato schermate: il frontend si costruisce direttamente in codice (D-016); i prompt restano come specifica dei contenuti.
 4. ~~Verifica dei paragrafi 4–5 sui contenuti delle schermate.~~ Fatto (paragrafo 5bis): aggiunto `expenseCount` alle categorie.
 5. Approvazione della spec da parte dell'utente, poi piano di implementazione (BE in TDD, poi FE).
